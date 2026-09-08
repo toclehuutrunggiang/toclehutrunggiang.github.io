@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HỌ LÊ VIỆT NAM — Tộc Lê Văn - Hữu Làng Trừng Giang</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f7f1e5;
+            color: #3b2116
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .header {
+            max-width: 1200px;
+            margin: auto;
+            padding: 12px;
+            background: #fff;
+            border: 5px solid #7b241c;
+            border-radius: 8px 8px 0 0
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            gap: 18px
+        }
+
+        .logo {
+            width: 105px;
+            height: 105px;
+            object-fit: contain
+        }
+
+        .title-wrap {
+            flex: 1;
+            text-align: center
+        }
+
+        .title {
+            margin: 0;
+            color: #8b1e16;
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 800
+        }
+
+        .subtitle {
+            margin: 6px 0 0;
+            color: #5b241a;
+            font-size: clamp(18px, 2.4vw, 28px);
+            font-weight: 700
+        }
+
+        .header-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px
+        }
+
+        .header-photos img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border: 3px solid #8b5a3c;
+            border-radius: 6px
+        }
+
+        .motto {
+            text-align: center;
+            margin: 12px 0 0;
+            color: #8b1e16;
+            font-weight: 800;
+            font-size: 20px
+        }
+
+        .motto2 {
+            text-align: center;
+            margin: 5px 0;
+            color: #5b241a;
+            font-weight: 700
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+            background: #7b241c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .menu-item {
+            position: relative;
+            color: #fff;
+            font-weight: 700;
+            padding: 13px 17px;
+            cursor: pointer;
+            border-right: 1px solid rgba(255, 255, 255, .25)
+        }
+
+        .menu-item:hover {
+            background: #9b3a2d
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            z-index: 1000;
+            left: 0;
+            top: 100%;
+            min-width: 270px;
+            background: #fff;
+            border: 2px solid #7b241c;
+            box-shadow: 0 5px 12px #0004
+        }
+
+        .submenu.open {
+            display: block
+        }
+
+        .submenu a {
+            display: block;
+            padding: 11px 13px;
+            color: #4b2419;
+            text-decoration: none;
+            border-bottom: 1px solid #ead8c5;
+            background: #fff
+        }
+
+        .submenu a:hover {
+            background: #f4e5d2
+        }
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            min-height: 500px;
+            padding: 18px
+        }
+
+        .section {
+            display: none
+        }
+
+        .section.active {
+            display: block
+        }
+
+        .home-title {
+            text-align: center;
+            color: #8b1e16;
+            margin: 5px 0 15px
+        }
+
+        .slideshow {
+            border: 4px solid #7b241c;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #180f0c
+        }
+
+        .slide-content {
+            height: 430px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .slide-content img,
+        .slide-content video {
+            max-width: 100%;
+            max-height: 430px;
+            width: 100%;
+            height: 430px;
+            object-fit: contain
+        }
+
+        .slide-caption {
+            text-align: center;
+            color: #fff;
+            background: #7b241c;
+            padding: 9px;
+            font-size: 18px;
+            font-weight: 600;
+            min-height: 42px
+        }
+
+        .slide-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            background: #f0dfca;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 5px;
+            padding: 9px 15px;
+            background: #7b241c;
+            color: #fff;
+            font-weight: 700
+        }
+
+        .btn:hover {
+            background: #9b3a2d
+        }
+
+        .btn.gold {
+            background: #9a691f
+        }
+
+        .btn.gray {
+            background: #666
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 16px 0
+        }
+
+        .stat {
+            background: #f5e6d2;
+            border: 1px solid #c99f7b;
+            border-radius: 7px;
+            padding: 9px 18px;
+            text-align: center;
+            min-width: 130px
+        }
+
+        .stat b {
+            display: block;
+            color: #8b1e16;
+            font-size: 22px
+        }
+
+        .action-row {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .content-box {
+            background: #fffaf2;
+            border: 2px solid #c69a73;
+            border-radius: 8px;
+            padding: 18px;
+            line-height: 1.7
+        }
+
+        .content-box h2 {
+            color: #8b1e16;
+            margin-top: 0
+        }
+
+        .back {
+            margin-top: 15px
+        }
+
+        .news-card {
+            border-bottom: 1px solid #dbc2a9;
+            padding: 13px 0
+        }
+
+        .news-card h3 {
+            margin: 0;
+            color: #8b1e16
+        }
+
+        .news-date {
+            color: #777;
+            font-size: 14px
+        }
+
+        .news-card img {
+            max-width: 220px;
+            max-height: 140px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-top: 8px
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 9px;
+            border: 1px solid #b89577;
+            border-radius: 5px;
+            background: #fff
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical
+        }
+
+        .full {
+            grid-column: 1/-1
+        }
+
+        .admin-box {
+            background: #f8eddf;
+            border: 2px solid #9a6a4a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px
+        }
+
+        .admin-box h3 {
+            margin-top: 0;
+            color: #7b241c
+        }
+
+        .media-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 12px
+        }
+
+        .media-item {
+            background: #fff;
+            border: 1px solid #caa98d;
+            border-radius: 6px;
+            padding: 8px
+        }
+
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            height: 130px;
+            object-fit: contain;
+            background: #222
+        }
+
+        .media-item .small {
+            font-size: 13px;
+            margin: 6px 0
+        }
+
+        .comment {
+            border-bottom: 1px solid #dbc2a9;
+            padding: 10px 0
+        }
+
+        .comment strong {
+            color: #7b241c
+        }
+
+        .gallery-card {
+            background: #fff;
+            border: 1px solid #caa98d;
+            border-radius: 7px;
+            padding: 8px;
+        }
+
+        .gallery-card img,
+        .gallery-card video {
+            width: 100%;
+            height: 190px;
+            object-fit: contain;
+            background: #222;
+            border-radius: 4px;
+        }
+
+        .gallery-caption {
+            text-align: center;
+            margin-top: 7px;
+            font-weight: 600;
+            color: #5b241a;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: auto;
+            background: #7b241c;
+            color: #fff;
+            text-align: center;
+            padding: 18px 10px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        footer strong {
+            font-size: 18px;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: auto;
+            background: #7b241c;
+            color: #fff;
+            text-align: center;
+            padding: 18px
+        }
+
+        @media(max-width:700px) {
+            .header-top {
+                align-items: flex-start
+            }
+
+            .logo {
+                width: 75px;
+                height: 75px
+            }
+
+            .header-photos {
+                grid-template-columns: 1fr
+            }
+
+            .header-photos img {
+                height: 180px
+            }
+
+            .menu-item {
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid #9d4b40
+            }
+
+            .submenu {
+                position: static;
+                width: 100%;
+                box-shadow: none
+            }
+
+            .slide-content,
+            .slide-content img,
+            .slide-content video {
+                height: 300px
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .gallery-card img,
+            .gallery-card video {
+                height: 170px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+
+            footer strong {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-top">
+            <img class="logo" src="logo-ho-le.jpg" alt="Logo Họ Lê">
+            <div class="title-wrap">
+                <h1 class="title">HỌ LÊ VIỆT NAM</h1>
+                <div class="subtitle">TỘC LÊ VĂN - HỮU LÀNG TRỪNG GIANG</div>
+            </div>
+        </div>
+        <div class="header-photos">
+            <img src="nha_tho.jpg" alt="Nhà thờ họ Lê Văn">
+            <img src="mo_cu_to.jpg" alt="Mộ cụ tổ họ Lê Văn">
+        </div>
+        <div class="motto">KÍNH NHỚ TIÊN TỔ – ĐOÀN KẾT – PHÁT TRIỂN</div>
+        <div class="motto2">GIỮ GÌN TRUYỀN THỐNG DÒNG TỘC</div>
+    </header>
+
+    <nav class="nav">
+        <div class="menu-item" onclick="toggleMenu('sub1')">GIỚI THIỆU
+            <div class="submenu" id="sub1">
+                <a href="#" onclick="showPage('truyen-thong');return false">- Truyền thống dòng tộc</a>
+                <a href="#" onclick="showPage('quy-uoc');return false">- Quy ước dòng Tộc</a>
+                <a href="#" onclick="showGallery();return false">- Thư viện ảnh</a>
+                <a href="#" onclick="showPage('dia-chi');return false">- Địa chỉ dòng tộc</a>
+                <a href="#" onclick="showPage('quan-he');return false">- Quan hệ dòng tộc</a>
+            </div>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu('sub2')">TIN TỨC - SỰ KIỆN
+            <div class="submenu" id="sub2">
+                <a href="#" onclick="showNews('tin-tuc');return false">- Tin tức - Hoạt động</a>
+                <a href="#" onclick="showNews('tri-an');return false">- Tri ân - Tiên Tổ</a>
+                <a href="#" onclick="showNews('nghien-cuu');return false">- Các tư liệu nghiên cứu</a>
+                <a href="#" onclick="showNews('doi-ngoai');return false">- Đối ngoại</a>
+                <a href="#" onclick="showNews('ngan-sach');return false">- Ngân sách</a>
+            </div>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu('sub3')">KHUYẾN HỌC - KHUYẾN TÀI
+            <div class="submenu" id="sub3">
+                <a href="#" onclick="showNews('thanh-tuu');return false">- Những thành tựu</a>
+                <a href="#" onclick="showNews('quy-che');return false">- Quy chế - Quy ước</a>
+                <a href="#" onclick="showNews('khuyen-hoc');return false">- Khuyến học khuyến tài</a>
+                <a href="#" onclick="showNews('nang-dau');return false">- Hội Nàng dâu - Con gái</a>
+                <a href="#" onclick="showNews('kinh-nghiem');return false">- Kinh nghiệm</a>
+            </div>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu('sub4')">TÌM CỘI NGUỒN
+            <div class="submenu" id="sub4">
+                <a href="#" onclick="openPDF('toc_le_t_giang_tap_1.pdf');return false">- Gia phả Tập 1</a>
+                <a href="#" onclick="openPDF('toc_le_t_giang_tap_2.pdf');return false">- Gia phả Tập 2</a>
+                <a href="#" onclick="openPDF('toc_le_t_giang_tap_3.pdf');return false">- Gia phả Tập 3</a>
+                <a href="#" onclick="openPDF('cac_ong_cao.pdf');return false">- Các ông Cao</a>
+                <a href="#" onclick="openPDF('phai_nhat.pdf');return false">- Phái Nhất</a>
+                <a href="#" onclick="openPDF('phai_nhi_he_1.pdf');return false">- Phái Nhì hệ 1</a>
+                <a href="#" onclick="openPDF('phai_nhi_he_2.pdf');return false">- Phái Nhì hệ 2</a>
+                <a href="#" onclick="openPDF('phai_nhi_he_3.pdf');return false">- Phái Nhì hệ 3</a>
+                <a href="#" onclick="openPDF('phai_nhi_he_4.pdf');return false">- Phái Nhì hệ 4</a>
+                <a href="#" onclick="openPDF('phai_nhi_he_5.pdf');return false">- Phái Nhì hệ 5</a>
+                <a href="#" onclick="openPDF('phai_nhi_he_6.pdf');return false">- Phái Nhì hệ 6</a>
+                <a href="#" onclick="openPDF('phai_nhi_chi_2_3_4.pdf');return false">- Phái Nhì chi 2-3-4</a>
+                <a href="#" onclick="openPDF('phai_ba.pdf');return false">- Phái Ba</a>
+                <a href="#" onclick="openPDF('Pha_ky.pdf');return false">- Phả ký</a>
+                <a href="#" onclick="openPDF('gia_su_toc_le.pdf');return false">- Gia sử tộc Lê</a>
+            </div>
+        </div>
+
+        <div class="menu-item" onclick="showAdminLogin()">QUẢN TRỊ</div>
+    </nav>
+
+    <main>
+        <section id="homeSection" class="section active">
+            <h2 class="home-title">THƯ VIỆN HÌNH ẢNH – TƯ LIỆU DÒNG TỘC</h2>
+            <div class="slideshow">
+                <div id="slideContent" class="slide-content"></div>
+                <div id="slideCaption" class="slide-caption"></div>
+                <div class="slide-controls">
+                    <button class="btn" onclick="prevSlide()">❮ Trước</button>
+                    <button class="btn gold" id="toggleSlideBtn" onclick="toggleSlide()">⏸ Tạm dừng</button>
+                    <button class="btn" onclick="nextSlide()">Sau ❯</button>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">Lượt xem<b id="viewCount">0</b></div>
+                <div class="stat">Theo dõi<b id="followCount">0</b></div>
+                <div class="stat">Chia sẻ<b id="shareCount">0</b></div>
+            </div>
+
+            <div class="action-row">
+                <button class="btn" onclick="followSite()">⭐ Theo dõi</button>
+                <button class="btn" onclick="shareSite()">🔗 Chia sẻ</button>
+            </div>
+
+            <div class="content-box" style="margin-top:18px">
+                <h2>Ý KIẾN CON CHÁU</h2>
+                <div class="form-grid">
+                    <input id="commentName" placeholder="Họ và tên">
+                    <div></div>
+                    <textarea id="commentText" class="full" placeholder="Nội dung ý kiến..."></textarea>
+                    <div class="full"><button class="btn" onclick="submitComment()">Gửi ý kiến</button></div>
+                </div>
+                <div id="approvedComments"></div>
+            </div>
+        </section>
+
+        <section id="contentSection" class="section">
+            <div id="contentBox" class="content-box"></div>
+            <button class="btn back" onclick="backHome()">← Về trang chủ</button>
+        </section>
+
+        <section id="gallerySection" class="section">
+            <div class="content-box">
+                <h2>THƯ VIỆN ẢNH – TƯ LIỆU DÒNG TỘC</h2>
+                <p>Ảnh và video do quản trị đưa vào sẽ xuất hiện tại đây và trong trình chiếu trang chủ.</p>
+                <div id="galleryGrid" class="media-list"></div>
+            </div>
+            <button class="btn back" onclick="backHome()">← Về trang chủ</button>
+        </section>
+
+        <section id="newsSection" class="section">
+            <div class="content-box">
+                <h2 id="newsHeading">TIN TỨC</h2>
+                <div id="newsList"></div>
+            </div>
+            <button class="btn back" onclick="backHome()">← Về trang chủ</button>
+        </section>
+
+        <section id="adminSection" class="section">
+            <div id="loginBox" class="admin-box">
+                <h2>ĐĂNG NHẬP QUẢN TRỊ</h2>
+                <input type="password" id="adminPassword" placeholder="Mật khẩu quản trị">
+                <br><br>
+                <button class="btn" onclick="adminLogin()">Đăng nhập</button>
+                <p id="loginMessage"></p>
+            </div>
+
+            <div id="adminPanel" style="display:none">
+                <div class="admin-box">
+                    <h2>⚙ QUẢN TRỊ TRANG</h2>
+                    <button class="btn" onclick="adminLogout()">Đăng xuất</button>
+                    <button class="btn gold" onclick="changePassword()">Đổi mật khẩu</button>
+                </div>
+
+                <div class="admin-box">
+                    <h3>1. QUẢN LÝ TRÌNH CHIẾU</h3>
+                    <div class="form-grid">
+                        <input type="file" id="mediaFile" accept="image/*,video/*">
+                        <input id="mediaCaption" placeholder="Chú thích ảnh/video">
+                        <div><button class="btn" onclick="addLocalMedia()">Thêm ảnh/video từ máy</button></div>
+                        <div></div>
+                        <input id="mediaUrl" placeholder="Dán đường dẫn ảnh/video">
+                        <input id="mediaUrlCaption" placeholder="Chú thích">
+                        <div><button class="btn" onclick="addUrlMedia()">Thêm từ đường dẫn</button></div>
+                    </div>
+                    <hr>
+                    <div id="mediaAdminList" class="media-list"></div>
+                </div>
+
+                <div class="admin-box">
+                    <h3>2. QUẢN LÝ TIN TỨC</h3>
+                    <div class="form-grid">
+                        <select id="newsCategory">
+                            <option value="tin-tuc">Tin tức - Hoạt động</option>
+                            <option value="tri-an">Tri ân - Tiên Tổ</option>
+                            <option value="nghien-cuu">Các tư liệu nghiên cứu</option>
+                            <option value="doi-ngoai">Đối ngoại</option>
+                            <option value="ngan-sach">Ngân sách</option>
+                            <option value="thanh-tuu">Những thành tựu</option>
+                            <option value="quy-che">Quy chế - Quy ước</option>
+                            <option value="khuyen-hoc">Khuyến học khuyến tài</option>
+                            <option value="nang-dau">Hội Nàng dâu - Con gái</option>
+                            <option value="kinh-nghiem">Kinh nghiệm</option>
+                        </select>
+                        <input type="date" id="newsDate">
+                        <input id="newsTitle" class="full" placeholder="Tiêu đề">
+                        <textarea id="newsContent" class="full" placeholder="Nội dung"></textarea>
+                        <input type="file" id="newsImage" accept="image/*">
+                        <div><button class="btn" onclick="addNews()">Thêm tin</button></div>
+                    </div>
+                    <div id="adminNewsList"></div>
+                </div>
+
+                <div class="admin-box">
+                    <h3>3. Ý KIẾN CHỜ DUYỆT</h3>
+                    <p>Ý kiến người xem được lưu vào danh sách chờ duyệt trên trình duyệt đang sử dụng.</p>
+                    <div id="pendingComments"></div>
+                </div>
+
+                <div class="admin-box">
+                    <h3>4. THỐNG KÊ</h3>
+                    <div id="adminStats"></div>
+                </div>
+
+                <div class="admin-box">
+                    <h3>5. CHỈNH SỬA THÔNG TIN TRANG</h3>
+                    <div class="form-grid">
+                        <input id="editDateInfo" class="full" placeholder="Thông tin ngày cập nhật">
+                        <input id="editFooterInfo" class="full" placeholder="Thông tin chân trang">
+                        <button class="btn" onclick="saveSiteContent()">Lưu thông tin</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div id="footerInfo">
+            <div><strong>Trang Web thuộc: HĐGT LÊ HỮU TRỪNG GIANG</strong></div>
+            <div>Chủ biên: Lê Hữu Phấn</div>
+            <div>ĐT, Zalo liên hệ: 0903 538 - 612 ; 0976 315 - 087</div>
+            <div>Gmail:
+                <a href="mailto:huuphan.levi@gmail.com">huuphan.levi@gmail.com</a>
+            </div>
+        </div>
+        <div id="dateInfo" style="margin-top:8px"></div>
+    </footer>
+
+    <script>
+        "use strict";
+
+        const DEFAULT_PASSWORD = "Phan@1357";
+        const DB_NAME = "LeVanFamilyMediaDB";
+        const DB_STORE = "media";
+        let currentSlide = 0;
+        let slideTimer = null;
+        let playing = true;
+        let isAdmin = false;
+
+        const CONTENTS = {
+            "truyen-thong": {
+                title: "TRUYỀN THỐNG DÒNG TỘC",
+                html: "<p>Đây là nơi giới thiệu truyền thống, lịch sử hình thành và những giá trị tốt đẹp của Tộc Lê Văn - Hữu Làng Trừng Giang.</p><p>Con cháu trong dòng tộc cùng nhau gìn giữ gia phong, kính nhớ tiên tổ, đoàn kết và phát triển.</p>"
+            },
+            "quy-uoc": {
+                title: "QUY ƯỚC DÒNG TỘC",
+                html: "<p>Nội dung quy ước dòng tộc được lưu giữ và cập nhật tại đây.</p>"
+            },
+            "thu-vien": {
+                title: "THƯ VIỆN ẢNH",
+                html: "<p>Các hình ảnh do quản trị đưa vào sẽ được trình chiếu tại trang chủ.</p>"
+            },
+            "dia-chi": {
+                title: "ĐỊA CHỈ DÒNG TỘC",
+                html: "<p>Thông tin địa chỉ và liên hệ dòng tộc được cập nhật tại đây.</p>"
+            },
+            "quan-he": {
+                title: "QUAN HỆ DÒNG TỘC",
+                html: "<p>Nội dung về quan hệ họ hàng, kết nối các chi phái và con cháu trong dòng tộc.</p>"
+            }
+        };
+
+        const CATEGORY_NAMES = {
+            "tin-tuc": "TIN TỨC - HOẠT ĐỘNG",
+            "tri-an": "TRI ÂN - TIÊN TỔ",
+            "nghien-cuu": "CÁC TƯ LIỆU NGHIÊN CỨU",
+            "tu-lieu": "CÁC TƯ LIỆU NGHIÊN CỨU",
+            "doi-ngoai": "ĐỐI NGOẠI",
+            "ngan-sach": "NGÂN SÁCH",
+            "thanh-tuu": "NHỮNG THÀNH TỰU",
+            "quy-che": "QUY CHẾ - QUY ƯỚC",
+            "khuyen-hoc": "KHUYẾN HỌC - KHUYẾN TÀI",
+            "nang-dau": "HỘI NÀNG DÂU - CON GÁI",
+            "kinh-nghiem": "KINH NGHIỆM"
+        };
+
+        function getStats() {
+            let s;
+            try { s = JSON.parse(localStorage.getItem("siteStats") || "null") } catch (e) { s = null }
+            if (!s) s = { views: 1234, follows: 89, shares: 156, monthly: {} };
+            if (!s.monthly) s.monthly = {};
+            return s;
+        }
+        function saveStats(s) { localStorage.setItem("siteStats", JSON.stringify(s)) }
+        function updateStats() {
+            const s = getStats();
+            document.getElementById("viewCount").textContent = s.views.toLocaleString("vi-VN");
+            document.getElementById("followCount").textContent = s.follows.toLocaleString("vi-VN");
+            document.getElementById("shareCount").textContent = s.shares.toLocaleString("vi-VN");
+            const month = new Date().toISOString().slice(0, 7);
+            if (!s.monthly[month]) s.monthly[month] = { views: 0, follows: 0, shares: 0 };
+            document.getElementById("adminStats").innerHTML =
+                "<p>Tổng lượt xem: <b>" + s.views + "</b></p>" +
+                "<p>Tổng theo dõi: <b>" + s.follows + "</b></p>" +
+                "<p>Tổng chia sẻ: <b>" + s.shares + "</b></p>" +
+                "<p>Tháng hiện tại (" + month + "): xem " + s.monthly[month].views +
+                ", theo dõi " + s.monthly[month].follows +
+                ", chia sẻ " + s.monthly[month].shares + "</p>";
+        }
+        function countStat(type) {
+            const s = getStats();
+            s[type] = (Number(s[type]) || 0) + 1;
+            const month = new Date().toISOString().slice(0, 7);
+            if (!s.monthly[month]) s.monthly[month] = { views: 0, follows: 0, shares: 0 };
+            s.monthly[month][type] = (Number(s.monthly[month][type]) || 0) + 1;
+            saveStats(s); updateStats();
+        }
+
+        function toggleMenu(id) {
+            document.querySelectorAll(".submenu").forEach(x => {
+                if (x.id !== id) x.classList.remove("open");
+            });
+            document.getElementById(id).classList.toggle("open");
+        }
+        document.addEventListener("click", function (e) {
+            if (!e.target.closest(".menu-item")) {
+                document.querySelectorAll(".submenu").forEach(x => x.classList.remove("open"));
+            }
+        });
+
+        function hideSections() {
+            document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+        }
+        function showPage(id) {
+            hideSections();
+            const box = document.getElementById("contentBox");
+            const c = CONTENTS[id] || { title: "NỘI DUNG", html: "<p>Nội dung đang được cập nhật.</p>" };
+            box.innerHTML = "<h2>" + c.title + "</h2>" + c.html;
+            document.getElementById("contentSection").classList.add("active");
+            closeMenus();
+        }
+
+        async function showGallery() {
+            hideSections();
+            document.getElementById("gallerySection").classList.add("active");
+            closeMenus();
+            await renderGallery();
+        }
+
+        async function renderGallery() {
+            const grid = document.getElementById("galleryGrid");
+            const slides = getSlides();
+
+            if (!slides.length) {
+                grid.innerHTML = "<p>Chưa có ảnh/video trong thư viện.</p>";
+                return;
+            }
+
+            let out = "";
+            for (const s of slides) {
+                const src = await resolveSrc(s.src);
+                if (!src) continue;
+
+                out += `
+                    <div class="gallery-card">
+                        ${s.type === "video"
+                        ? `<video src="${escapeAttr(src)}" controls playsinline></video>`
+                        : `<img src="${escapeAttr(src)}" alt="${escapeAttr(s.caption || "")}">`}
+                        <div class="gallery-caption">${escapeHtml(s.caption || "")}</div>
+                    </div>`;
+            }
+
+            grid.innerHTML = out || "<p>Không đọc được tư liệu đã lưu.</p>";
+        }
+
+        function showNews(category) {
+            hideSections();
+            document.getElementById("newsSection").classList.add("active");
+            document.getElementById("newsHeading").textContent = CATEGORY_NAMES[category] || "TIN TỨC";
+            const news = getNews().filter(n => n.category === category);
+            const list = document.getElementById("newsList");
+            if (!news.length) {
+                list.innerHTML = "<p>Chưa có nội dung. Quản trị viên có thể thêm tin tại mục QUẢN TRỊ.</p>";
+            } else {
+                list.innerHTML = news.map(n => `
+      <article class="news-card">
+        <h3>${escapeHtml(n.title)}</h3>
+        <div class="news-date">${escapeHtml(n.date || "")}</div>
+        ${n.image ? `<img src="${n.image}" alt="">` : ""}
+        <p>${escapeHtml(n.content).replace(/\n/g, "<br>")}</p>
+      </article>`).join("");
+            }
+            closeMenus();
+        }
+        function closeMenus() { document.querySelectorAll(".submenu").forEach(x => x.classList.remove("open")) }
+        function backHome() {
+            hideSections();
+            document.getElementById("homeSection").classList.add("active");
+            closeMenus();
+        }
+        function backToHome() { backHome() }
+
+        function openPDF(file) {
+            window.open(file, "_blank");
+            closeMenus();
+        }
+
+        function getSlides() {
+            let slides;
+            try { slides = JSON.parse(localStorage.getItem("familySlides") || "null") } catch (e) { slides = null }
+            if (!Array.isArray(slides) || !slides.length) {
+                slides = [
+                    { type: "image", src: "nha_tho.jpg", caption: "Nhà thờ họ Lê Văn" },
+                    { type: "image", src: "mo_cu_to.jpg", caption: "Mộ cụ tổ họ Lê Văn" }
+                ];
+                localStorage.setItem("familySlides", JSON.stringify(slides));
+            }
+            return slides;
+        }
+        function saveSlides(slides) { localStorage.setItem("familySlides", JSON.stringify(slides)) }
+        function renderSlide() {
+            const slides = getSlides();
+            if (!slides.length) {
+                document.getElementById("slideContent").innerHTML = "<p style='color:white'>Chưa có tư liệu trình chiếu.</p>";
+                document.getElementById("slideCaption").textContent = "";
+                return;
+            }
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            const s = slides[currentSlide];
+            const holder = document.getElementById("slideContent");
+            if (s.type === "video") {
+                holder.innerHTML = "<video src='" + escapeAttr(s.src) + "' controls playsinline></video>";
+            } else {
+                holder.innerHTML = "<img src='" + escapeAttr(s.src) + "' alt='" + escapeAttr(s.caption || "") + "' onerror=\"this.alt='Không tìm thấy ảnh';\">";
+            }
+            document.getElementById("slideCaption").textContent = s.caption || "";
+        }
+        function nextSlide() { const n = getSlides().length; if (n) { currentSlide = (currentSlide + 1) % n; renderSlide() } }
+        function prevSlide() { const n = getSlides().length; if (n) { currentSlide = (currentSlide - 1 + n) % n; renderSlide() } }
+        function startSlideshow() {
+            clearInterval(slideTimer);
+            slideTimer = setInterval(() => { if (playing) nextSlide() }, 5000);
+        }
+        function toggleSlide() {
+            playing = !playing;
+            document.getElementById("toggleSlideBtn").textContent = playing ? "⏸ Tạm dừng" : "▶ Tiếp tục";
+        }
+        function followSite() {
+            countStat("follows");
+            alert("Đã ghi nhận lượt theo dõi trên thiết bị này.");
+        }
+        async function shareSite() {
+            countStat("shares");
+            try {
+                if (navigator.share) {
+                    await navigator.share({ title: document.title, url: location.href });
+                } else {
+                    await navigator.clipboard.writeText(location.href);
+                    alert("Đã sao chép đường dẫn trang.");
+                }
+            } catch (e) { }
+        }
+
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open(DB_NAME, 1);
+                req.onupgradeneeded = () => { if (!req.result.objectStoreNames.contains(DB_STORE)) req.result.createObjectStore(DB_STORE) };
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
+        }
+        async function putMedia(id, data) {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(DB_STORE, "readwrite");
+                tx.objectStore(DB_STORE).put(data, id);
+                tx.oncomplete = () => resolve();
+                tx.onerror = () => reject(tx.error);
+            });
+        }
+        async function getMedia(id) {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(DB_STORE, "readonly");
+                const req = tx.objectStore(DB_STORE).get(id);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
+        }
+        async function deleteMedia(id) {
+            try {
+                const db = await openDB();
+                await new Promise((resolve, reject) => {
+                    const tx = db.transaction(DB_STORE, "readwrite");
+                    tx.objectStore(DB_STORE).delete(id);
+                    tx.oncomplete = resolve; tx.onerror = () => reject(tx.error);
+                });
+            } catch (e) { }
+        }
+        async function resolveSrc(src) {
+            if (typeof src === "string" && src.startsWith("idb:")) {
+                try { return await getMedia(src.substring(4)) } catch (e) { return "" }
+            }
+            return src;
+        }
+
+        async function addLocalMedia() {
+            if (!isAdmin) return;
+            const file = document.getElementById("mediaFile").files[0];
+            const caption = document.getElementById("mediaCaption").value.trim();
+            if (!file) { alert("Bạn chưa chọn ảnh hoặc video."); return }
+            const id = "media_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+            try {
+                await putMedia(id, { blob: file, type: file.type, name: file.name });
+                const slides = getSlides();
+                slides.push({ type: file.type.startsWith("video/") ? "video" : "image", src: "idb:" + id, caption: caption || file.name });
+                saveSlides(slides);
+                document.getElementById("mediaFile").value = "";
+                document.getElementById("mediaCaption").value = "";
+                currentSlide = slides.length - 1;
+                renderSlide(); renderMediaAdmin(); renderGallery();
+            } catch (e) {
+                alert("Không lưu được tệp. Bạn thử ảnh/video nhỏ hơn.");
+            }
+        }
+        function addUrlMedia() {
+            if (!isAdmin) return;
+            const url = document.getElementById("mediaUrl").value.trim();
+            const caption = document.getElementById("mediaUrlCaption").value.trim();
+            if (!url) { alert("Bạn chưa dán đường dẫn."); return }
+            const type = /\.(mp4|webm|ogg)(\?|#|$)/i.test(url) ? "video" : "image";
+            const slides = getSlides();
+            slides.push({ type: type, src: url, caption: caption });
+            saveSlides(slides);
+            document.getElementById("mediaUrl").value = "";
+            document.getElementById("mediaUrlCaption").value = "";
+            currentSlide = slides.length - 1; renderSlide(); renderMediaAdmin(); renderGallery();
+        }
+        async function editSlideCaption(index) {
+            if (!isAdmin) return;
+            const slides = getSlides();
+            const value = prompt("Nhập chú thích mới:", slides[index].caption || "");
+            if (value === null) return;
+            slides[index].caption = value.trim(); saveSlides(slides); renderSlide(); renderMediaAdmin(); renderGallery();
+        }
+        async function removeSlide(index) {
+            if (!isAdmin) return;
+            const slides = getSlides();
+            const item = slides[index];
+            if (!confirm("Bạn có chắc muốn xóa tư liệu này?")) return;
+            if (item.src && item.src.startsWith("idb:")) await deleteMedia(item.src.substring(4));
+            slides.splice(index, 1); saveSlides(slides);
+            if (currentSlide >= slides.length) currentSlide = Math.max(0, slides.length - 1);
+            renderSlide(); renderMediaAdmin(); renderGallery();
+        }
+        function moveSlide(index, dir) {
+            if (!isAdmin) return;
+            const slides = getSlides(); const j = index + dir;
+            if (j < 0 || j >= slides.length) return;
+            [slides[index], slides[j]] = [slides[j], slides[index]];
+            saveSlides(slides); currentSlide = j; renderSlide(); renderMediaAdmin(); renderGallery();
+        }
+        async function renderMediaAdmin() {
+            const list = document.getElementById("mediaAdminList");
+            const slides = getSlides();
+            if (!slides.length) { list.innerHTML = "<p>Chưa có tư liệu.</p>"; return }
+            let out = "";
+            for (let i = 0; i < slides.length; i++) {
+                const s = slides[i]; const src = await resolveSrc(s.src);
+                out += `<div class="media-item">
+      ${s.type === "video" ? `<video src="${escapeAttr(src)}" controls></video>` : `<img src="${escapeAttr(src)}" alt="">`}
+      <div class="small"><b>${i + 1}.</b> ${escapeHtml(s.caption || "Không có chú thích")}</div>
+      <button class="btn gold" onclick="editSlideCaption(${i})">✏️ Sửa</button>
+      <button class="btn" onclick="moveSlide(${i},-1)">↑</button>
+      <button class="btn" onclick="moveSlide(${i},1)">↓</button>
+      <button class="btn gray" onclick="removeSlide(${i})">🗑 Xóa</button>
+    </div>`;
+            }
+            list.innerHTML = out;
+        }
+
+        function getNews() {
+            try {
+                const n = JSON.parse(localStorage.getItem("familyNews") || "[]");
+                return Array.isArray(n) ? n : [];
+            } catch (e) { return [] }
+        }
+        function saveNews(n) { localStorage.setItem("familyNews", JSON.stringify(n)) }
+        function addNews() {
+            if (!isAdmin) return;
+            const title = document.getElementById("newsTitle").value.trim();
+            const content = document.getElementById("newsContent").value.trim();
+            const category = document.getElementById("newsCategory").value;
+            const date = document.getElementById("newsDate").value || new Date().toISOString().slice(0, 10);
+            const file = document.getElementById("newsImage").files[0];
+            if (!title || !content) { alert("Vui lòng nhập tiêu đề và nội dung."); return }
+            const finish = (image) => {
+                const news = getNews();
+                news.unshift({ id: Date.now(), category, title, content, date, image: image || "" });
+                saveNews(news);
+                document.getElementById("newsTitle").value = "";
+                document.getElementById("newsContent").value = "";
+                document.getElementById("newsImage").value = "";
+                renderAdminNews();
+                alert("Đã thêm tin.");
+            };
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => finish(reader.result);
+                reader.readAsDataURL(file);
+            } else finish("");
+        }
+        function editNews(id) {
+            if (!isAdmin) return;
+            const news = getNews(); const i = news.findIndex(n => n.id === id);
+            if (i < 0) return;
+            const n = news[i];
+            const title = prompt("Sửa tiêu đề:", n.title); if (title === null) return;
+            const content = prompt("Sửa nội dung:", n.content); if (content === null) return;
+            n.title = title.trim(); n.content = content.trim(); saveNews(news); renderAdminNews();
+        }
+        function deleteNews(id) {
+            if (!isAdmin) return;
+            if (!confirm("Xóa tin này?")) return;
+            saveNews(getNews().filter(n => n.id !== id)); renderAdminNews();
+        }
+        function renderAdminNews() {
+            const list = document.getElementById("adminNewsList"), news = getNews();
+            if (!news.length) { list.innerHTML = "<p>Chưa có tin.</p>"; return }
+            list.innerHTML = news.map(n => `
+    <div class="news-card">
+      <h3>${escapeHtml(n.title)}</h3>
+      <div class="news-date">${escapeHtml(n.date)} — ${escapeHtml(CATEGORY_NAMES[n.category] || n.category)}</div>
+      <button class="btn gold" onclick="editNews(${n.id})">✏️ Sửa</button>
+      <button class="btn gray" onclick="deleteNews(${n.id})">🗑 Xóa</button>
+    </div>`).join("");
+        }
+
+        function getComments() {
+            try {
+                const c = JSON.parse(localStorage.getItem("familyComments") || "null");
+                if (c && Array.isArray(c.pending) && Array.isArray(c.approved)) return c;
+            } catch (e) { }
+            return { pending: [], approved: [] };
+        }
+        function saveComments(c) { localStorage.setItem("familyComments", JSON.stringify(c)) }
+        function submitComment() {
+            const name = document.getElementById("commentName").value.trim();
+            const text = document.getElementById("commentText").value.trim();
+            if (!name || !text) { alert("Vui lòng nhập họ tên và nội dung."); return }
+            const c = getComments();
+            c.pending.push({ id: Date.now(), name, text, date: new Date().toLocaleString("vi-VN") });
+            saveComments(c);
+            document.getElementById("commentName").value = "";
+            document.getElementById("commentText").value = "";
+            renderComments();
+            if (isAdmin) renderPendingComments();
+            alert("Đã gửi ý kiến vào danh sách CHỜ DUYỆT. Quản trị mở QUẢN TRỊ → Ý KIẾN CHỜ DUYỆT để duyệt.");
+        }
+        function renderComments() {
+            const c = getComments(), box = document.getElementById("approvedComments");
+            if (!c.approved.length) { box.innerHTML = "<p>Chưa có ý kiến được duyệt.</p>"; return }
+            box.innerHTML = c.approved.map(x => `
+    <div class="comment"><strong>${escapeHtml(x.name)}</strong>
+    <span class="news-date"> — ${escapeHtml(x.date || "")}</span>
+    <div>${escapeHtml(x.text).replace(/\n/g, "<br>")}</div></div>`).join("");
+        }
+        function renderPendingComments() {
+            const c = getComments(), box = document.getElementById("pendingComments");
+            if (!c.pending.length) { box.innerHTML = "<p>Không có ý kiến chờ duyệt.</p>"; return }
+            box.innerHTML = c.pending.map(x => `
+    <div class="comment">
+      <strong>${escapeHtml(x.name)}</strong> — ${escapeHtml(x.date || "")}
+      <div>${escapeHtml(x.text).replace(/\n/g, "<br>")}</div>
+      <button class="btn" onclick="approveComment(${x.id})">✓ Duyệt</button>
+      <button class="btn gray" onclick="deleteComment(${x.id},true)">🗑 Xóa</button>
+    </div>`).join("");
+        }
+        function approveComment(id) {
+            if (!isAdmin) return;
+            const c = getComments(), i = c.pending.findIndex(x => x.id === id);
+            if (i < 0) return;
+            c.approved.unshift(c.pending.splice(i, 1)[0]); saveComments(c); renderComments(); renderPendingComments();
+        }
+        function deleteComment(id, pending) {
+            if (!isAdmin) return;
+            const c = getComments();
+            if (pending) c.pending = c.pending.filter(x => x.id !== id);
+            else c.approved = c.approved.filter(x => x.id !== id);
+            saveComments(c); renderComments(); renderPendingComments();
+        }
+
+        function showAdminLogin() {
+            hideSections();
+            document.getElementById("adminSection").classList.add("active");
+            document.getElementById("loginMessage").textContent = "";
+            document.getElementById("adminPassword").value = "";
+            document.getElementById("loginBox").style.display = isAdmin ? "none" : "block";
+            document.getElementById("adminPanel").style.display = isAdmin ? "block" : "none";
+            closeMenus();
+        }
+        function adminLogin() {
+            const password = document.getElementById("adminPassword").value;
+            const saved = localStorage.getItem("adminPassword") || DEFAULT_PASSWORD;
+            if (password === saved) {
+                isAdmin = true;
+                document.getElementById("loginBox").style.display = "none";
+                document.getElementById("adminPanel").style.display = "block";
+                renderAdminAll();
+                document.getElementById("adminPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+            } else {
+                document.getElementById("loginMessage").textContent = "❌ Mật khẩu không đúng.";
+            }
+        }
+        function adminLogout() {
+            isAdmin = false;
+            document.getElementById("loginBox").style.display = "block";
+            document.getElementById("adminPanel").style.display = "none";
+            backHome();
+        }
+        function changePassword() {
+            if (!isAdmin) return;
+            const old = prompt("Nhập mật khẩu hiện tại:");
+            if (old === null) return;
+            const saved = localStorage.getItem("adminPassword") || DEFAULT_PASSWORD;
+            if (old !== saved) { alert("Mật khẩu hiện tại không đúng."); return }
+            const p = prompt("Nhập mật khẩu mới:");
+            if (!p || p.length < 6) { alert("Mật khẩu mới phải có ít nhất 6 ký tự."); return }
+            localStorage.setItem("adminPassword", p); alert("Đã đổi mật khẩu.");
+        }
+        function renderAdminAll() {
+            renderMediaAdmin(); renderAdminNews(); renderPendingComments(); updateStats(); loadSiteContent();
+        }
+
+        function loadSiteContent() {
+            const c = JSON.parse(localStorage.getItem("siteContent") || "{}");
+            document.getElementById("editDateInfo").value = c.dateInfo || "";
+            document.getElementById("editFooterInfo").value = c.footerInfo || "";
+            document.getElementById("dateInfo").textContent = c.dateInfo || "";
+            if (c.footerInfo) {
+                document.getElementById("footerInfo").innerHTML = escapeHtml(c.footerInfo).replace(/\n/g, "<br>");
+            }
+        }
+        function saveSiteContent() {
+            if (!isAdmin) return;
+            const c = {
+                dateInfo: document.getElementById("editDateInfo").value.trim(),
+                footerInfo: document.getElementById("editFooterInfo").value.trim()
+            };
+            localStorage.setItem("siteContent", JSON.stringify(c)); loadSiteContent(); alert("Đã lưu thông tin.");
+        }
+
+        function escapeHtml(v) {
+            return String(v ?? "").replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[m]));
+        }
+        function escapeAttr(v) { return escapeHtml(v) }
+
+        function initialize() {
+            const s = getStats();
+            const viewed = sessionStorage.getItem("levan_view_counted");
+            if (!viewed) {
+                s.views = (Number(s.views) || 0) + 1;
+                const month = new Date().toISOString().slice(0, 7);
+                if (!s.monthly[month]) s.monthly[month] = { views: 0, follows: 0, shares: 0 };
+                s.monthly[month].views++;
+                saveStats(s); sessionStorage.setItem("levan_view_counted", "1");
+            }
+            renderSlide(); startSlideshow(); updateStats(); renderComments(); loadSiteContent();
+        }
+        window.addEventListener("DOMContentLoaded", initialize);
+    </script>
+</body>
+
+</html>
