@@ -1239,6 +1239,224 @@
         }
         window.addEventListener("DOMContentLoaded", initialize);
     </script>
+    <!-- ==============================================
+       ====== PHẦN TIN TỨC & SỰ KIỆN ======
+       ============================================== -->
+    
+    <style>
+        /* === KHUNG CHUNG TIN TỨC === */
+        .tin-tuc-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            font-family: "Times New Roman", serif;
+        }
+    
+        .tin-tuc-title {
+            text-align: center;
+            color: #8B4513;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #8B4513;
+        }
+    
+        /* === MỖI BÀI TIN === */
+        .bai-tin {
+            background: #fff9f0;
+            border: 2px solid #d2b48c;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+    
+        .bai-tin:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+    
+        .bai-tin h3 {
+            color: #654321;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+    
+        .ngay-dang {
+            color: #888;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+    
+        .noi-dung-bai-tin {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+    
+        /* === HÌNH ẢNH TRONG BÀI TIN === */
+        .hinh-anh-bai-viet {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+    
+        .hinh-anh-bai-viet img {
+            max-width: 30%;
+            height: auto;
+            border: 3px solid #8B4513;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* === PHÂN TRANG === */
+        .phan-trang {
+            text-align: center;
+            margin-top: 40px;
+        }
+    
+        .nut-trang {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #8B4513;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    
+        .nut-trang:hover {
+            background: #654321;
+        }
+    </style>
+    
+    <!-- ========== NỘI DUNG TIN TỨC ========== -->
+    <div class="tin-tuc-section">
+    
+        <h2 class="tin-tuc-title">📰 TIN TỨC & SỰ KIỆN GIA TỘC</h2>
+    
+        <!-- ====== BÀI TIN 1 ====== -->
+        <div class="bai-tin">
+            <h3>🏛️ Lễ Vu lan tại nhà thờ Họ Lê Năm 2026</h3>
+            <div class="ngay-dang">Ngày: 27/08/2026 | Người đăng: Quản trị gia tộc</div>
+            <div class="noi-dung-bai-tin">
+                Ngày lễ Vu lan năm nay được tổ chức trọng thể tại Nhà thờ họ Lê hữu, tại Củ chi, thành phố Hồ Chí Minh. Toàn thể con cháu gần xa
+                đã tập trung về tham dự, thể hiện lòng hiếu thảo và sự đoàn kết của đại gia đình. Đây là dịp để con cháu thể hiện lòng hiếu kính báo hiếu,thế hệ sau
+                hiểu rõ hơn về nguồn gốc, tổ tiên và tiếp nối truyền thống tốt đẹp của gia tộc.
+            </div>
+            <div class="hinh-anh-bai-viet">
+                <img src="vu_lan 2026.jpg" alt="Lễ Vu lan họ Lê">
+                <img src="nha_tho_vido.mp4" alt="Cảnh nhà thờ">
+                <img src="anh_em_gap_vu_lan.jpg" alt="Nhà thờ họ Lê anh em gặp nhau">
+            </div>
+            <div class="noi-dung-bai-tin">
+                Buổi lễ diễn ra trang nghiêm theo nghi thức truyền thống. Sau phần lễ là phần tụ họp, giao lưu, chia sẻ tình
+                cảm gia đình. Các anh chị em đã cùng nhau ôn lại lịch sử gia tộc, những tấm gương đạo đức và thành đạt trong
+                họ.
+            </div>
+        </div>
+    
+        <!-- ====== BÀI TIN 2 ====== -->
+        <div class="bai-tin">
+            <h3>📜 Khu sinh hoạt chung Họ Lê</h3>
+            <div class="ngay-dang">Ngày: 02/09/2026 | Người đăng: Ban Lãnh Đạo Gia Tộc</div>
+            <div class="noi-dung-bai-tin">
+                Nhà thờ Tộc Lê Hữu chúng ta có khu sinh hoạt chung tuyệt vời, nhằm tăng tính mỹ quan, sạch đẹp, rộng, thanh lịch các anh em con cháu thống nhất: làm bờ kè, rào, đắp đất tạo nơi sinh hoạt sach đẹp, cuộc gặp hôm nay khảo sát và hướng hoàn thiện tâm niệm vhung
+            </div>
+                        <div class="hinh-anh-bai-viet">
+                <img src="vc_anh_phuc.jpg" alt="Vc anh Phúc cùng gia tộc khảo sát">
+                <img src="vc_anh_buoi.jpg" alt="về thắp nhang">
+                <!-- ====== PHẦN HIỂN THỊ VIDEO ====== -->
+                <div style="max-width: 800px; margin: 30px auto; text-align: center;">
+                    <h3 style="color: #8B4513;">🎬 Video Sự Kiện</h3>
+                         <source src="nha_tho_vidio.mp4" type="video/mp4">
+                    <video controls width="100%"
+                        style="border: 3px solid #8B4513; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                        <source src="nha_tho_vidio.mp4" type="video/mp4">
+                         Trình duyệt của bạn không hỗ trợ phát video.
+                    </video>
+                    <p style="margin-top: 10px; color: #666;"> Khảo sát và dâng  hương nhà tờ Họ Lê — Năm 2026</p>
+                </div>
+                <!-- ====== KẾT THÚC VIDEO ====== -->
+               
+            </div>
+            <div class="noi-dung-bai-tin">
+                Các anh, chú tâm huyết hoàn thành công trình trong năm2026, mong các con cháu gần xa nhiệt tình ủng hộ
+                                            </div>
+        </div>
+    
+        <!-- ====== BÀI TIN 3 ====== -->
+    <h3>🎉 Những Hoạt Động thời gian qua</h3>
+    <div class="ngay-dang">Ngày: 15/06/2026 | Người đăng: Ban Lãnh Đạo Gia Tộc</div>
+    <div class="noi-dung-bai-tin">
+        Hoạt động thường niên trong gia tộc là sự gắn kết gần gủi, trao đổi học tập kinh nghiệm đồng thời trao thông tin lịch sử trăm của cha ông truyền lại
+    </div>
+    <div class="hinh-anh-bai-viet">
+        <img src="nha_tho_tp_hcm.jpg" alt="Hội nghị gia tộc">
+        <img src="gia_toc.jpg" alt="Thế hệ trẻ họ Lê">
+        <img src="mo_cu.jpg" alt="Hoạt động kết nối">
+    </div>
+    </div>
+                    
+                          <div class="noi-dung-bai-tin">
+                Các anh chị em trong họ đã hứa sẽ luôn giáo dục con cháu biết trân trọng hiếu kính Ông bà, cha mẹ sống có ích, xứng đáng
+                với sự hy sinh cao cả của tiền nhân. Sự hy sinh cao cả của tiền nhân sẽ mãi được ghi khắc trong lịch sử gia tộc.
+            </div>
+        </div>
+    
+        <!-- ====== BÀI TIN 4 — Thêm bài mới tương tự ====== -->
+        <div class="bai-tin">
+            <h3>🎉 Đề Xuất Hoạt Động Kết Nối Thế Hệ Trẻ</h3>
+            <div class="ngay-dang">Ngày: 15/06/2026 | Người đăng: Ban Lãnh Đạo Gia Tộc</div>
+            <div class="noi-dung-bai-tin">
+                Để thu hút và gắn kết thế hệ trẻ trong gia tộc, ban lãnh đạo đề xuất tổ chức các hoạt động thường niên như:
+                hội thao gia tộc, chuyến tham quan về nguồn, khóa học về truyền thống và nghi thức gia đình. Mong mọi người
+                góp ý và tham gia ủng hộ.
+            </div>
+            <div class="hinh-anh-bai-viet">
+                <img src="nha_tho_tp_hcm.jpg" alt="Hội nghị gia tộc">
+                <img src="gia_toc.jpg" alt="Thế hệ trẻ họ Lê">
+                <img src="mo_cu.jpg" alt="Hoạt động kết nối">
+            </div>
+        </div>
+    
+        <!-- ====== NÚT PHÂN TRANG ====== -->
+        <div class="phan-trang">
+            <span class="nut-trang" style="background: #ccc; cursor: not-allowed;">◀ Trước</span>
+            <span class="nut-trang" style="background: #654321;">1</span>
+            <a href="#" class="nut-trang">2</a>
+            <a href="#" class="nut-trang">3</a>
+            <a href="#" class="nut-trang">Sau ▶</a>
+        </div>
+    
+    </div>
+    <!-- ====== KẾT THÚC PHẦN TIN TỨC ====== -->
+
+    <!-- ====== BÀI TIN MỚI ====== -->
+    <div class="bai-tin">
+        <h3>TIÊU ĐỀ BÀI TIN MỚI Ở ĐÂY</h3>
+        <div class="ngay-dang">Ngày: DD/MM/YYYY | Người đăng: Tên bạn</div>
+        <div class="noi-dung-bai-tin">
+            Viết nội dung bài tin ở đây — mô tả sự kiện, hoạt động, tin vui của gia tộc...
+        </div>
+        <div class="hinh-anh-bai-viet">
+            <img src="ten_anh_1.jpg" alt="Mô tả ảnh 1">
+            <img src="ten_anh_2.jpg" alt="Mô tả ảnh 2">
+            <img src="ten_anh_3.jpg" alt="Mô tả ảnh 3">
+        </div>
+        <div class="noi-dung-bai-tin">
+            Tiếp tục viết thêm nội dung nếu cần...
+        </div>
+    </div>
 </body>
 
 </html>
