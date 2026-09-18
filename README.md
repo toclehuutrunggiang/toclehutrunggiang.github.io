@@ -497,8 +497,9 @@
             </div>
         </div>
         <div class="header-photos">
-            <img src="nha_tho.jpg" alt="Nhà thờ họ Lê Văn">
-            <img src="mo_cu_to.jpg" alt="Mộ cụ tổ họ Lê Văn">
+            <img src="nha_tho.jpg" alt="Nhà thờ họ Lê Hữu Tại Làng Trừng Giang">
+            <img src="mo_cu_to.jpg" alt="Mộ cụ tổ họ Lê Hữu">
+            <img src="nha_tho_tp_hcm.jpg" alt="Nhà thờ Lê Hữu tại Củ Chi, Tp. HCM">
         </div>
         <div class="motto">KÍNH NHỚ TIÊN TỔ – ĐOÀN KẾT – PHÁT TRIỂN</div>
         <div class="motto2">GIỮ GÌN TRUYỀN THỐNG DÒNG TỘC</div>
