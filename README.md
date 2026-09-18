@@ -1459,6 +1459,131 @@
             Tiếp tục viết thêm nội dung nếu cần...
         </div>
     </div>
+    <!-- === BẮT ĐẦU: KHUNG QUẢN LÝ TIN TỨC === -->
+<style>
+/* Khung tin tức - không ảnh hưởng giao diện cũ */
+.khung-tintuc { margin: 30px 0; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.khung-dangtin { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px dashed #eee; }
+.khung-dangtin h3 { margin: 0 0 15px 0; color: #2ea44f; }
+.khung-dangtin input, .khung-dangtin textarea { width: 100%; padding: 12px; margin: 6px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
+.khung-dangtin button { background: #2ea44f; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 15px; cursor: pointer; margin-right: 8px; }
+.khung-dangtin button:hover { opacity: 0.9; }
+.nut-xoa { background: #d73a49; }
+.nut-sua { background: #0366d6; }
+.muc-tin { padding: 18px; margin: 12px 0; background: #fafafa; border-radius: 8px; border-left: 4px solid #2ea44f; }
+.tin-tieude { font-size: 19px; font-weight: bold; color: #222; margin-bottom: 8px; }
+.tin-thoigian { font-size: 13px; color: #888; margin-bottom: 10px; }
+.tin-noidung { line-height: 1.6; color: #333; margin-bottom: 10px; white-space: pre-wrap; }
+.khung-sua { display: none; margin-top: 10px; padding: 12px; background: #f0f8ff; border-radius: 6px; }
+</style>
+
+<div class="khung-tintuc">
+  <h2>📢 Tin Tức Mới</h2>
+
+  <!-- Khung Đăng/Sửa Tin -->
+  <div class="khung-dangtin">
+    <h3>✍️ Đăng Tin Mới</h3>
+    <input type="text" id="tintuc_tieude" placeholder="Nhập tiêu đề tin...">
+    <textarea id="tintuc_noidung" rows="4" placeholder="Nội dung tin tức..."></textarea>
+    <button onclick="tintuc_Dang()">📤 Đăng Tin</button>
+  </div>
+
+  <!-- Danh Sách Tin Tức -->
+  <div id="tintuc_danhsach"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// === KẾT NỐI VỚI SUPABASE CỦA BẠN ===
+// Lấy khóa công khai tại: Supabase → Cài đặt → API → Khóa công khai
+const SUPABASE_URL = 'https://adhvgjtrmmiflnznswmh.supabase.co';
+const SUPABASE_KEY = '--- ĐIỀN KHÓA CÔNG KHAI CỦA BẠN Ở ĐÂY ---';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// === TẢI & HIỂN THỊ TIN TỨC ===
+async function tintuc_Tai() {
+  const { data, error } = await sb
+    .from('tin_tuc')
+    .select('*')
+    .order('ngay_dang', { ascending: false });
+
+  if (error) return console.error('Lỗi tải:', error);
+  
+  const khung = document.getElementById('tintuc_danhsach');
+  khung.innerHTML = '';
+
+  data.forEach(tin => {
+    khung.innerHTML += `
+      <div class="muc-tin">
+        <div class="tin-tieude">${tin.tieu_de}</div>
+        <div class="tin-thoigian">${new Date(tin.ngay_dang).toLocaleString('vi-VN')}</div>
+        <div class="tin-noidung">${tin.noi_dung}</div>
+        <button class="nut-sua" onclick="tintuc_BatSua(${tin.id}, '${tin.tieu_de.replace(/'/g, "\\'")}', '${tin.noi_dung.replace(/'/g, "\\'")}')">✏️ Sửa</button>
+        <button class="nut-xoa" onclick="tintuc_Xoa(${tin.id})">🗑️ Xóa</button>
+        <div class="khung-sua" id="sua_${tin.id}">
+          <input type="text" id="sua_tieude_${tin.id}" value="${tin.tieu_de.replace(/"/g, '&quot;')}">
+          <textarea id="sua_noidung_${tin.id}" rows="3">${tin.noi_dung}</textarea>
+          <button onclick="tintuc_LuuSua(${tin.id})">✅ Lưu</button>
+          <button onclick="tintuc_DongSua(${tin.id})">❌ Đóng</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+// === ĐĂNG TIN MỚI ===
+async function tintuc_Dang() {
+  const tieuDe = document.getElementById('tintuc_tieude').value.trim();
+  const noiDung = document.getElementById('tintuc_noidung').value.trim();
+  
+  if (!tieuDe || !noiDung) return alert('Điền tiêu đề & nội dung nhé!');
+
+  const { error } = await sb.from('tin_tuc').insert([{
+    tieu_de: tieuDe,
+    noi_dung: noiDung
+  }]);
+
+  if (error) alert('Lỗi đăng tin: ' + error.message);
+  else {
+    document.getElementById('tintuc_tieude').value = '';
+    document.getElementById('tintuc_noidung').value = '';
+    tintuc_Tai();
+  }
+}
+
+// === SỬA TIN ===
+function tintuc_BatSua(id, td, nd) {
+  document.getElementById(`sua_${id}`).style.display = 'block';
+}
+function tintuc_DongSua(id) {
+  document.getElementById(`sua_${id}`).style.display = 'none';
+}
+async function tintuc_LuuSua(id) {
+  const tieuDe = document.getElementById(`sua_tieude_${id}`).value.trim();
+  const noiDung = document.getElementById(`sua_noidung_${id}`).value.trim();
+  if (!tieuDe || !noiDung) return alert('Không để trống!');
+
+  const { error } = await sb.from('tin_tuc')
+    .update({ tieu_de: tieuDe, noi_dung: noiDung })
+    .eq('id', id);
+
+  if (error) alert('Lưu thất bại: ' + error.message);
+  else tintuc_Tai();
+}
+
+// === XÓA TIN ===
+async function tintuc_Xoa(id) {
+  if (!confirm('Chắc chắn xóa tin này?')) return;
+  
+  const { error } = await sb.from('tin_tuc').delete().eq('id', id);
+  if (error) alert('Xóa thất bại: ' + error.message);
+  else tintuc_Tai();
+}
+
+// === TỰ ĐỘNG TẢI KHI MỞ TRANG ===
+tintuc_Tai();
+</script>
+<!-- === KẾT THÚC: KHUNG QUẢN LÝ TIN TỨC === -->
 </body>
 
 </html>
